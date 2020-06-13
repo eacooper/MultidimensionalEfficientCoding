@@ -209,6 +209,9 @@ for n = 1:n_sims
     xlabel('2D Probability'); ylabel('1D Bandwidth'); box on;
     
     % save results
+    if ~exist('sims/correlations/plots/'); mkdir('sims/correlations/plots/'); end
+    if ~exist('sims/correlations/data/'); mkdir('sims/correlations/data/'); end
+    
     saveas(gcf,['sims/correlations/plots/sim' num2str(n) '_sx' num2str(stdev_px,2) '_sy' num2str(stdev_py,2) '_th' num2str(round(theta*180/pi)) '_correlations.eps'],'epsc')
     close(gcf);
     save(['sims/correlations/data/sim' num2str(n) '_sx' num2str(stdev_px,2) '_sy' num2str(stdev_py,2) '_th' num2str(round(theta*180/pi)) '_data.mat'],'r_gain','r_width');

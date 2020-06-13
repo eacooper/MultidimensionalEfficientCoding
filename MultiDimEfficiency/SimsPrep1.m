@@ -56,6 +56,9 @@ for n = sims_start:sims_end
     [F,Fx,Fy,Fxi,Fyi,pU,fhand] = compute_uniform_transform(nbin,pD,'circle');
     
     % save results and diagnostic figure
+    if ~exist('sims/manifolds/plots/'); mkdir('sims/manifolds/plots/'); end
+    if ~exist('sims/manifolds/data/'); mkdir('sims/manifolds/data/'); end
+    
     saveas(fhand,['sims/manifolds/plots/sim' num2str(n) '_sx' num2str(stdev_px,2) '_sy' num2str(stdev_py,2) '_th' num2str(round(theta*180/pi)) '_optimization_result.eps'],'epsc')
     close(fhand);
     save(['sims/manifolds/data/sim' num2str(n) '_sx' num2str(stdev_px,2) '_sy' num2str(stdev_py,2) '_th' num2str(round(theta*180/pi)) '_data.mat'],'sbx','sby','sbmx','sbmy','stdev_px','stdev_py','theta','pD','F','Fx','Fy','Fxi','Fyi','pU');

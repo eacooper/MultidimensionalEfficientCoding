@@ -231,6 +231,7 @@ caxis(axFishCum,[0 ...
     max(fisherD_cum(abs(sbmx(1:end,1:end))<=abs(axis_range(1)) & abs(sbmy(1:end,1:end))<=abs(axis_range(1))))]);
 
 %% save panels
+if ~exist('panels/Fisher/'); mkdir('panels/Fisher/'); end
 
 if ~scale_up
     saveas(figProb,['panels/Fisher/fig' num2str(Example) '_prob.eps'],'epsc')

@@ -156,6 +156,8 @@ end
 
 
 % save panels
+if ~exist('panels/Examples/'); mkdir('panels/Examples/'); end
+
 saveas(figProb,['panels/Examples/fig' num2str(Example) 'a.eps'],'epsc')
 saveas(figDnsty,['panels/Examples/fig' num2str(Example) 'c.eps'],'epsc')
 saveas(figProbSep,['panels/Examples/fig' num2str(Example) 'a2.eps'],'epsc')

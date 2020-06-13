@@ -120,6 +120,8 @@ for n = 1:numel(ms1)
 end
 
 %% Save plots
+if ~exist('panels/Summary/'); mkdir('panels/Summary/'); end
+
 saveas(figProb,'panels/Summary/fig2a.eps','epsc')
 saveas(figUni,'panels/Summary/fig2b.eps','epsc')
 saveas(figDnsty,'panels/Summary/fig2c.eps','epsc')

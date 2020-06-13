@@ -34,6 +34,7 @@ set(gca,'ytick',[]); set(gca,'xtick',[0],'xticklabel',[]); axis([-1 1 0 n_sims])
 set(h2,'FaceColor',[0.5 0.5 0.5]);
 set(h2,'FaceAlpha',1)
 
+if ~exist('panels/CorrelationSims/'); mkdir('panels/CorrelationSims/'); end
 saveas(fig1,['panels/CorrelationSims/figprob_gain_1D.eps'],'epsc')
 saveas(fig2,['panels/CorrelationSims/figprob_width_1D.eps'],'epsc')
 

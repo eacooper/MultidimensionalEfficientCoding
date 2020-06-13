@@ -118,6 +118,7 @@ for p = examples
     [F,Fx,Fy,Fxi,Fyi,pU,fhand] = compute_uniform_transform(nbin,pD,window_type);
     
     % save diagnostic figure
+    if ~exist('panels/Examples/'); mkdir('panels/Examples/'); end
     saveas(fhand,['panels/Examples/p' num2str(p) '_optimization_result.eps'],'epsc')
     close(fhand);
     

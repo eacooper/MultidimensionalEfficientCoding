@@ -79,6 +79,8 @@ for n = 1:numel(m)
 end
 
 %% Save plots
+if ~exist('panels/Summary/'); mkdir('panels/Summary/'); end
+
 saveas(figProb,'panels/Summary/fig1a.eps','epsc')
 saveas(figUni,'panels/Summary/fig1b.eps','epsc')
 saveas(figCml,'panels/Summary/fig1c.eps','epsc')

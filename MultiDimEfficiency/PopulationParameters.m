@@ -139,6 +139,8 @@ plot(axFishBad, s, fisher_scaled_bad);
 plot(axFishBad, s, ones(size(s)) .* I_conv.*(double((1+df_bad(s))).^2) .*g_bad(s));
 
 %% Save plots
+if ~exist('panels/Parameters/'); mkdir('panels/Parameters/'); end
+
 saveas(figDispGood,'panels/Parameters/fig1a.eps','epsc')
 saveas(figDispBad,'panels/Parameters/fig1d.eps','epsc')
 saveas(figWarpGood1,'panels/Parameters/fig1b.eps','epsc')

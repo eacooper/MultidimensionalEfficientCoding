@@ -26,7 +26,7 @@ CorrelationAnalysis;
 % Large scale simulations and analysis of correlations
 SimsPrep1;      % first generate the manifolds
 SimsPrep2;      % the compute tuning curve characteristics
-SimsPlot;       % then generate plots
+SimsPlotIt;       % then generate plots
 
 % Analysis Fisher Information in example populations
 FisherInfo;

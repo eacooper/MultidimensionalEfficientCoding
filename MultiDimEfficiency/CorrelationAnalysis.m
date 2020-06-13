@@ -286,6 +286,8 @@ scatter(axBandW1D,prob1Ds2,1./width1Ds2,'ko','filled');
 
 
 %% save plots
+if ~exist('panels/CorrelationAnalysis/'); mkdir('panels/CorrelationAnalysis/'); end
+
 saveas(figGain,['panels/CorrelationAnalysis/fig' num2str(Example) '_prob_gain_1D.eps'],'epsc')
 saveas(figBandW,['panels/CorrelationAnalysis/fig' num2str(Example) '_prob_width_1D.eps'],'epsc')
 saveas(figHori,['panels/CorrelationAnalysis/fig' num2str(Example) 'b.eps'],'epsc')
