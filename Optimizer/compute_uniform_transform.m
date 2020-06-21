@@ -52,7 +52,7 @@ meta = estruct(p, pU, pD, h, bmx, bmy);
 
 %% Solve for manifold potential
 
-% number of filter taps for first derivative (must be odd)
+% number of filter taps for first derivative (must be 5 for current opimizer to work)
 ntaps = 5;
 
 % solve for the manifold potential
