@@ -7,6 +7,7 @@ function [pU,p] = compute_density_change(win_type,bmx,bmy,h,pD)
 %
 % PARAMETERS
 %       nbin:       number of bins used to sample probability distribution
+%                   in each dimension
 %       pD:         non-uniform probability distribution
 %       win_type:   shape of the window used to match the uniform and
 %                   non-uniform distributions at the edges of the domain
@@ -45,7 +46,7 @@ switch win_type
     case 'square'
         
         % Make uniform density of same resolution/support as pD, but with a square window after which pU = 0
-        npad   = 4;
+        npad                    = 4;
         pU                      = ones(size(pD));
         pU(1:npad,:)            = 0;
         pU(end-npad+1:end,:)    = 0;

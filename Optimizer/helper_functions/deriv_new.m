@@ -1,5 +1,5 @@
 function y = deriv_new(x, dtype, h, ntaps, boundopt)
-% Function y = deriv(x, dtype, h, ntaps, boundopt)
+% Function y = deriv_new(x, dtype, h, ntaps, boundopt)
 %   Computes the derivative of a 2D function, x.
 %   
 % PARAMETERS
@@ -32,7 +32,7 @@ function y = deriv_new(x, dtype, h, ntaps, boundopt)
   tx = 0;
   ty = 0;
   if dtype(1) == 'x'
-    y  = imfilter( imfilter(x, d, 'full', 'conv', boundopt), p',         'full', 'conv', boundopt) / h;
+    y  = imfilter( imfilter(x, d, 'full', 'conv', boundopt), p','full', 'conv', boundopt) / h;
   else
     y = imfilter( imfilter(x, p, 'full', 'conv', boundopt), flipud(d'), 'full', 'conv', boundopt) / h;    
   end

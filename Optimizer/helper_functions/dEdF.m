@@ -1,5 +1,5 @@
 function [err dEdF pest] = dEdF(f, p, h, ntaps, meta)
-% FUNCTION [err dEdG pestw] = dEdF(f, p, h, ntaps, meta)
+% FUNCTION [err dEdF pest] = dEdF(f, p, h, ntaps, meta)
 %   Computes an error, and gradient of that error.
 %   Variable f is a potential function that embodies a gradient field
 %   which warps a uniform probability density into a desired
@@ -8,12 +8,15 @@ function [err dEdF pest] = dEdF(f, p, h, ntaps, meta)
 %   p can be computed from f. This function does that, 
 %   and then computes an error between p and the estimate from f.
 %   
-% PARMATERS
-%   f    :  A potential function, MxN
+% PARAMATERS
+%   f    :  A potential function, MxN vectorized
 %   p    :  Normalized change in density, MxN
 %   h    :  Lattice spacing
 %  ntaps :  Number of taps to specify to deriv() function
+%  meta  :  meta structure used for visualization and debugging
 %
+% RETURNS:
+%   err  :  the error between p and the estimate of p derived from f
 
   % Get potential function from solution vector
   F = unpackfun(f, size(p), ntaps);
@@ -26,13 +29,13 @@ function [err dEdF pest] = dEdF(f, p, h, ntaps, meta)
   Fxy  = deriv_new(Fx, 'y', h, ntaps, 'replicate');
 
   % Residual
-  pest = Fxx.*Fyy - Fxy.^2 + Fxx + Fyy;
+  pest = Fxx.*Fyy - Fxy.^2 + Fxx + Fyy; % Eq 17 from Kee paper
   R    = pest - p;
 
   % Error
   err = 0.5*sum(R(:).^2);
 
-  % Terms for computing partials in central area 
+  % Terms for computing partials in central area (Eqs 18-23 in Kee paper)
   FxxR = Fxx.*R;
   FyyR = Fyy.*R;
   FxyR = Fxy.*R;
@@ -52,6 +55,8 @@ function [err dEdF pest] = dEdF(f, p, h, ntaps, meta)
   [E3 ids] = edgeGrads(FxyR, 'xy', h, ntaps);  
   [E4 ids] = edgeGrads(   R, 'xx', h, ntaps);  
   [E5 ids] = edgeGrads(   R, 'yy', h, ntaps);  
+  
+  % partials along edges
   dEdF(ids) = E1 + E2 - 2*E3 + E4 + E5; 
 
   % Plot to show how it's going

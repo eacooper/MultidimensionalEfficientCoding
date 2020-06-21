@@ -10,7 +10,7 @@ function [F,Fx,Fy,Fxi,Fyi,pU,fhand] = compute_uniform_transform(nbin,pD,win_type
 % axXiv preprint598arXiv:160901982. 2016
 %
 % PARAMETERS
-%       nbin:       number of bins used to sample probability distribution
+%       nbin:       number of bins used to sample each dimension of the probability distribution
 %       pD:         non-uniform probability distribution
 %       win_type:   shape of the window used to match the uniform and
 %                   non-uniform distributions at the edges of the domain
@@ -52,7 +52,7 @@ meta = estruct(p, pU, pD, h, bmx, bmy);
 
 %% Solve for manifold potential
 
-% number of filter taps for first derivative
+% number of filter taps for first derivative (must be odd)
 ntaps = 5;
 
 % solve for the manifold potential

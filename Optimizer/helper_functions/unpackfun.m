@@ -11,8 +11,8 @@ function F = unpackfun(f, sz, ntaps)
 %   F  :  A potential function
 %
   % Unpack f 
-  b     = borderwid(ntaps); 
-  szlow = sz-2*b;
-  F     = reshape(f, szlow);
-  F     = padarray(F, [b b], 'replicate');
+  b     = borderwid(ntaps);                 % compute width of padding border, which is the amount of the edges of F that have been replicated
+  szlow = sz-2*b;                           % size of F along one dimension without padding
+  F     = reshape(f, szlow);                % reshape f into F   
+  F     = padarray(F, [b b], 'replicate');  % add the replicate padding in
 end
