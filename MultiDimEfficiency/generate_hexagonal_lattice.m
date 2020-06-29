@@ -1,9 +1,9 @@
 function [ms1,ms2] = generate_hexagonal_lattice(spacing,stim_range)
 % generate hexagonal lattice for neurons
 
-m1          = 0:spacing:stim_range(2)+1;
+m1          = 0:spacing:stim_range(2);
 m1          = [-m1(end:-1:2) m1];
-m2          = 0:sqrt(0.75)*spacing:stim_range(2)+1;
+m2          = 0:sqrt(0.75)*spacing:stim_range(2);
 m2          = [-m2(end:-1:2) m2];
 [ms1,ms2]   = meshgrid(m1,m2);
 
